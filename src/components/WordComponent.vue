@@ -1,21 +1,19 @@
 <template>
   <div class="word">
     <div v-for="i in wordCount" :key="i">
-      {{ input[i-1]  }}
+      {{ charactersSelected[i-1]  }}
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Word',
-  props: {
-    word: String,
-    input: Array
-  },
   computed: {
     wordCount: function() {
-      return this.word.length
+      return this.$store.state.game.selectedWord.length
+    },
+    charactersSelected: function() {
+      return this.$store.state.game.charactersSelected
     }
   }
 }
