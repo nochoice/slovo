@@ -15,15 +15,15 @@ export default {
   },
   computed: {
     charactersGenerated: function() {
-      return this.$store.state.game.charactersGenerated
+      return this.$store.getters.getGame.charactersGenerated
     },
     charPositionSelected: function() {
-      return this.$store.state.game.charactersSelectedPosition
+      return this.$store.getters.getGame.charactersSelectedPosition
     }
   },
   data() {
     return {
-      size: this.$store.state.game.charactersGeneratedLength
+      size: this.$store.getters.getGame.charactersGeneratedLength
     }
   }
 }
@@ -31,7 +31,7 @@ export default {
 
 <style lang="scss" scoped>
 .letter-choose {
-  $size: 30px;
+  $size: 40px;
   display: flex;
   justify-content: center;
 

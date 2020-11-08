@@ -1,37 +1,30 @@
 <template>
   <div id="app">
-    <Word />
-    <br>
-    <br>
-    <button @click="reset()">reset</button>
-    <button @click="setWord()">Set word</button>
-    <br>
-    <br>
-    <br>
-    <LetterChoose />
-
+    <Intro v-if="gamesState === 'INTRO'"/>
+    <Playing  v-if="gamesState === 'PLAYING'"/>
+    
     <br>
     <br>
     <br>
     <br>
 
-    -- {{isSame}} --
+    -- {{isSame}} -- {{gamesState}}
 
   </div>
 </template>
 
 <script>
-
-import Word from './components/WordComponent.vue';
-import LetterChoose from './components/LetterChooseComponent.vue';
+import Intro from './components/IntroComponent.vue';
+import Playing from './components/PlayingComponent.vue';
 
 export default {
   name: 'App',
   components: {
-    Word,
-    LetterChoose
+    Playing,
+    Intro
   },
   mounted: function() {
+    console.log(this.$store)
     this.$store.commit('charactersRandomGenerate')
   },
   data() {
@@ -39,16 +32,14 @@ export default {
     }
   },
   methods: {
-    reset: function() {
-      this.$store.commit('reset')
-    },
-    setWord: function() {
-      this.$store.commit('setWord', 'Uff')
-    }
+    
   },
   computed: {
     isSame: function() {
       return this.$store.getters.areWordsSame;
+    },
+    gamesState: function() {
+      return this.$store.state.game.gamesState;
     }
   }
 }
@@ -62,5 +53,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+
+  
 }
 </style>

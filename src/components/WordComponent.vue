@@ -1,5 +1,5 @@
 <template>
-  <div class="word">
+  <div v-bind:class="{ 'word animate__animated animate__shakeX': true }">
     <div v-for="i in wordCount" :key="i">
       {{ charactersSelected[i-1]  }}
     </div>
@@ -10,10 +10,10 @@
 export default {
   computed: {
     wordCount: function() {
-      return this.$store.state.game.selectedWord.length
+      return this.$store.getters.getGame.selectedWord.length
     },
     charactersSelected: function() {
-      return this.$store.state.game.charactersSelected
+      return this.$store.getters.getGame.charactersSelected
     }
   }
 }
@@ -21,7 +21,7 @@ export default {
 
 <style lang="scss" scoped>
 .word {
-  $size: 30px;
+  $size: 40px;
   display: flex;
   justify-content: center;
 
