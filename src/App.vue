@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <Intro v-if="gamesState === 'INTRO'"/>
-    <Playing  v-if="gamesState === 'PLAYING'"/>
-    
+     <!-- v-if="gamesState === 'PLAYING'" -->
+     <!-- v-if="gamesState === 'INTRO'" -->
+    <Intro />
+    <Playing />
+
     <br>
     <br>
     <br>
@@ -27,19 +29,12 @@ export default {
     console.log(this.$store)
     this.$store.commit('charactersRandomGenerate')
   },
-  data() {
-    return {
-    }
-  },
-  methods: {
-    
-  },
   computed: {
     isSame: function() {
       return this.$store.getters.areWordsSame;
     },
     gamesState: function() {
-      return this.$store.state.game.gamesState;
+      return this.$store.state.app.state;
     }
   }
 }
@@ -53,7 +48,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-
-  
 }
 </style>

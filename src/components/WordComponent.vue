@@ -9,11 +9,14 @@
 <script>
 export default {
   computed: {
+    gameState: function() {
+      return this.$store.state.game
+    },
     wordCount: function() {
-      return this.$store.getters.getGame.selectedWord.length
+      return this.gameState.selectedWord.length
     },
     charactersSelected: function() {
-      return this.$store.getters.getGame.charactersSelected
+      return this.gameState.charactersSelected
     }
   }
 }

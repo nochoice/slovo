@@ -15,16 +15,17 @@ export default {
   },
   computed: {
     charactersGenerated: function() {
-      return this.$store.getters.getGame.charactersGenerated
+      return this.gameState.charactersGenerated
     },
     charPositionSelected: function() {
-      return this.$store.getters.getGame.charactersSelectedPosition
-    }
-  },
-  data() {
-    return {
-      size: this.$store.getters.getGame.charactersGeneratedLength
-    }
+      return this.gameState.charactersSelectedPosition
+    },
+    size: function() {
+      return this.gameState.charactersGeneratedLength
+    },
+    gameState: function() {
+      return this.$store.state.game
+    },
   }
 }
 </script>

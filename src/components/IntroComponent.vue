@@ -1,13 +1,13 @@
 <template>
   <div class="hello">
-    <h1>Vitejte na soutezi zavody konu</h1>
+    <h1>Vitejte v hre SLOVO</h1>
 
     <div v-for="(game, index) in games" :key="game.name">
       <div @click="select(index)">
         {{ game.name }}
       </div>
     </div>
-    <button @click="create()">Vytvorte si kone</button>
+    <button @click="createNewGame()">Nova hra</button>
     <input type="text" v-model="name">
   </div>
 </template>
@@ -20,17 +20,16 @@ export default {
     }
   },
   methods: {
-    create: function() {
+    createNewGame: function() {
       this.$store.commit('newGame', this.name);
     },
     select: function(index) {
-      this.$store.commit('selectGame', index);
+      this.$store.dispatch('selectGame', index);
     }
   },
   computed: {
     games: function() {
-      console.log('asda', this.$store)
-      return this.$store.state.game.games
+      return this.$store.state.app.games
     }
   }
 }

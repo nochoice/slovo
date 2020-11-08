@@ -41,7 +41,7 @@ export default {
   },
   computed: {
     game: function() {
-      return this.$store.getters.getGame
+      return this.$store.state.game
     }
   }
 }
