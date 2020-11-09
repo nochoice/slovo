@@ -27,6 +27,7 @@ let gameState = {
   state: 1,
   wordsGuessed: [],
   selectedWord: 'A',
+  selectedWordObject: {},
   charactersSelected: [],
   charactersSelectedPosition: [],
   charactersGenerated: [],
@@ -54,8 +55,9 @@ const gameStore =  {
       state.charactersSelected.push(state.charactersGenerated[position]);
       state.charactersSelectedPosition.push(position);
     },
-    setWord: function(state, word) {
-      state.selectedWord = word;
+    setWord: function(state, wordObj) {
+      state.selectedWord = wordObj.value;
+      state.selectedWordObject = wordObj;
       store.commit('reset');
       store.commit('charactersRandomGenerate')
     },
@@ -70,7 +72,7 @@ const gameStore =  {
       store.dispatch('newRandomWord');
     },
     newRandomWord: (store) => {
-      store.commit('setWord', WORDS[Math.round(Math.random() * WORDS.length - 1)].value); 
+      store.commit('setWord', WORDS[Math.round(Math.random() * WORDS.length - 1)]); 
     }  
   },
   getters: {

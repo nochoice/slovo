@@ -7,6 +7,9 @@
 
     <v-card>
       <v-card-text class="pt-10 pb-10">
+
+        <WordImage />
+        
         <Word 
           v-bind:class="{'animate__animated animate__shakeX': isWrongAnswer, 'animate__animated animate__shakeY': isRightAnswer }"
           class="mb-16 animate__fast" />
@@ -24,13 +27,15 @@
 <script>
   import Word from './WordComponent.vue';
   import LetterChoose from './LetterChooseComponent.vue';
+  import WordImage from './ImageComponent.vue';
 
 const TIME_INTERACTION = 800;
 
 export default {
   components: {
       Word,
-      LetterChoose
+      LetterChoose,
+      WordImage
   },
   data() {
     return {
@@ -41,9 +46,6 @@ export default {
   methods: {
     reset: function() {
       this.$store.commit('reset')
-    },
-    setWord: function() {
-      this.$store.commit('setWord', ['Romanek', 'Auto', 'Maminka', 'A', 'B', 'Uff' ][Math.round(Math.random() * 5)])
     },
     shuffle: function() {
       this.$store.commit('charactersRandomGenerate')
