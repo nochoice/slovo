@@ -3,19 +3,23 @@ import Vuex from 'vuex';
 import App from './App.vue';
 
 import 'animate.css'
+import vuetify from './plugins/vuetify';
 
 Vue.config.productionTip = false;
 Vue.use(Vuex);
 
+const words = ['Romanek', 'Auto', 'Maminka', 'A', 'B', 'Uff' ]
+
 let gameState = {
   name: 'Romankova prvni hra',
   state: 1,
-  words: ['Romanek', 'Auto', 'Maminka', 'A', 'B', 'Uff' ],
+  words: words,
+  wordsGuessed: [],
   selectedWord: 'A',
   charactersSelected: [],
   charactersSelectedPosition: [],
   charactersGenerated: [],
-  charactersGeneratedLength: 10,
+  charactersGeneratedLength: 12,
 }
 
 const gameStore =  {
@@ -45,10 +49,17 @@ const gameStore =  {
       store.commit('charactersRandomGenerate')
     }
   },
-  actions: {  },
+  actions: {
+    // selectGame: (store) => {
+    //   console.log('game store - selectGame', store)
+    // }
+  },
   getters: {
     areWordsSame: (state) => {
-      return state.charactersSelected.join('').toLowerCase() === state.selectedWord.toLowerCase()
+      return state.charactersSelected.join('').toLowerCase() === state.selectedWord.toLowerCase() 
+    },
+    areWordsLengthSame: (state) => {
+      return (state.charactersSelected.length === state.selectedWord.length)
     }
    }
 }
@@ -56,26 +67,40 @@ const gameStore =  {
 const appStore = {
   state: () => ({
     state: 'INTRO',
-    games: [gameState]
+    games: []
   }),
   mutations: {
-    newGame: (stateWrap, gameName) => {
-      const ng = JSON.parse(JSON.stringify(gameState));
-      ng.name = gameName;
-      stateWrap.games.push(ng);
+    newGame: (state, game) => {
+      state.games.push(game);
     },
     backToIntro: (state) => {
       state.state = 'INTRO'
     },
-    setAppState: (state, enumState) => state.state = enumState
+    startPalying: (state) => {
+      state.state = 'PLAYING'
+    },
+    setAppState: (state, enumState) => {
+      state.state = enumState;
+      console.log(state)
+    }
   },
   actions: {  
+    newGame: (state, gameName) => {
+      const ng = JSON.parse(JSON.stringify(gameState));
+      ng.name = gameName.trim();
+      state.rootState.game = ng;
+
+      state.commit('newGame', ng);
+      state.commit('startPalying');
+    },
     selectGame: (state, index) => {
       state.rootState.game = state.state.games[index];
-      state.commit('setAppState', 'PLAYING');
+      console.log('app store - selectGame')
+      state.commit('startPalying');
     }
   },
   getters: {
+    
     getGame: state => {
       return state.games[state.gameSelected];
     }
@@ -91,5 +116,6 @@ const store = new Vuex.Store({
 
 new Vue({
   render: h => h(App),
+  vuetify,
   store
 }).$mount('#app')

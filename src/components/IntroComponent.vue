@@ -1,14 +1,34 @@
 <template>
   <div class="hello">
-    <h1>Vitejte v hre SLOVO</h1>
+      <h1 class="mb-10">Vitejte v hre SLOVO</h1>
 
-    <div v-for="(game, index) in games" :key="game.name">
-      <div @click="select(index)">
-        {{ game.name }}
-      </div>
-    </div>
-    <button @click="createNewGame()">Nova hra</button>
-    <input type="text" v-model="name">
+      <center class="ma-6" v-if="!isCreateNew">
+          <v-btn @click="isCreateNew = true" color="primary" v-if="games.length">Nova hra</v-btn>
+          <v-btn @click="isCreateNew = true" color="primary" v-if="!games.length">Vytvorte si novu hru</v-btn>
+      </center>
+
+      <v-card class="mt-6 mb-6 pb-4" v-if="isCreateNew">
+        <v-card-title>Nova hra</v-card-title>
+        <v-card-text>
+          <v-text-field label="Nazev hry" v-model="name"></v-text-field>
+        </v-card-text>
+
+        <v-card-actions>
+          <v-btn @click="createNewGame()" color="primary">Vytvorit</v-btn>
+          <v-btn @click="isCreateNew = false; name = ''" >Zpet</v-btn>
+        </v-card-actions>
+      </v-card>
+
+      <v-card v-if="!isCreateNew && games.length" class="pb-4" tile>
+        <v-card-title>Vase hry</v-card-title>
+        <v-list-item v-for="(game, index) in games" :key="game.name"  @click="select(index)">
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ game.name }}
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-card>
   </div>
 </template>
 
@@ -16,12 +36,13 @@
 export default {
   data() {
     return {
-      name: ''
+      name: '',
+      isCreateNew: false
     }
   },
   methods: {
     createNewGame: function() {
-      this.$store.commit('newGame', this.name);
+      this.$store.dispatch('newGame', this.name);
     },
     select: function(index) {
       this.$store.dispatch('selectGame', index);
@@ -37,5 +58,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
+h1 {
+  text-align: center;
+}
 </style>

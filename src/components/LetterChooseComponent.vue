@@ -1,9 +1,9 @@
 <template>
-  <div class="letter-choose">
-    <div v-for="i in size" :key="i" @click="choose(i-1)">
-      <span v-if="!charPositionSelected.includes(i-1)">{{ charactersGenerated[i-1] }}</span>
+  <center>
+    <div class="d-flex justify-center flex-wrap">
+      <v-btn v-for="i in size" :key="i" @click="choose(i-1)" color="primary" elevation="0" outlined :disabled="charPositionSelected.includes(i-1)" class="mr-2 ml-2 mb-4">{{ charactersGenerated[i-1] }}</v-btn>
     </div>
-  </div>
+  </center>
 </template>
 
 <script>

@@ -1,8 +1,9 @@
 <template>
-  <div v-bind:class="{ 'word animate__animated animate__shakeX': true }">
-    <div v-for="i in wordCount" :key="i">
+  <div class="d-flex flex-wrap justify-center">
+    <v-btn v-for="i in wordCount" :key="i" color="primary" class="mr-2 ml-2 mb-2" elevation="0">{{ charactersSelected[i-1] }}</v-btn>
+    <!-- <div v-for="i in wordCount" :key="i">
       {{ charactersSelected[i-1]  }}
-    </div>
+    </div> -->
   </div>
 </template>
 
