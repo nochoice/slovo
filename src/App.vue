@@ -2,19 +2,9 @@
   <v-app>
     <v-main class="mt-10">
       <v-container class="wrapper">
-           <!--  -->
-        <Intro  v-if="gamesState === 'INTRO'"/>
+        <Intro v-if="gamesState === 'INTRO'"/>
         <Playing v-if="gamesState === 'PLAYING'"/>
-
-        <br>
-        <br>
-        <br>
-        <br>
-    <!-- <div class="primary--text">
-
-        -- {{isSame}} -- {{gamesState}}
-
-    </div> -->
+        <Congratulation v-if="gamesState === 'CONGRATULATION'"/>
 
       </v-container>
     </v-main>
@@ -28,12 +18,14 @@
 <script>
 import Intro from './components/IntroComponent.vue';
 import Playing from './components/PlayingComponent.vue';
+import Congratulation from './components/CongratulationComponent.vue';
 
 export default {
   name: 'App',
   components: {
     Playing,
-    Intro
+    Intro,
+    Congratulation
   },
   mounted: function() {
     this.$store.commit('charactersRandomGenerate')
@@ -44,6 +36,9 @@ export default {
     },
     gamesState: function() {
       return this.$store.state.app.state;
+    },
+    wordsCount: function() {
+      return this.$store.getters.getWordsCount
     }
   }
 }

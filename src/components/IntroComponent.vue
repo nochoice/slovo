@@ -21,12 +21,24 @@
 
       <v-card v-if="!isCreateNew && games.length" class="pb-4" tile>
         <v-card-title>Vase hry</v-card-title>
-        <v-list-item v-for="(game, index) in games" :key="game.name"  @click="select(index)">
-          <v-list-item-content>
+        <v-list-item v-for="(game, index) in games" :key="game.name" @click="select(index)">
+          <v-list-item-content >
             <v-list-item-title>
-              {{ game.name }}
+              {{ game.name }} 
             </v-list-item-title>
+
+            <v-list-item-subtitle>{{ game.wordsGuessed.length || 0 }}/{{ wordsCount }}</v-list-item-subtitle>
           </v-list-item-content>
+
+          <v-list-item-action>
+            <v-btn icon @click.stop="remove(index)">
+              <v-icon color="red" >mdi-delete</v-icon>
+            </v-btn>
+            <v-btn icon v-if="isRefreshAble(game)" @click.stop="gameRefresh(index)">
+              <v-icon color="green" >mdi-refresh</v-icon>
+            </v-btn>
+            
+        </v-list-item-action>
         </v-list-item>
       </v-card>
   </div>
@@ -45,13 +57,34 @@ export default {
       this.$store.dispatch('newGame', this.name);
     },
     select: function(index) {
-      this.$store.dispatch('selectGame', index);
+      console.log(index, this.isPlayAble(index))
+      if (this.isPlayAble(index)) {
+        this.$store.dispatch('selectGame', index);
+      }
+    },
+    remove: function(index) {
+      this.$store.dispatch('removeGame', index);
+    },
+    isPlayAble: function(index) {
+      return this.wordsCount > this.games[index].wordsGuessed.length && this.games[index].state !== 'FINISHED'
+    },
+    isRefreshAble: function(game) {
+      game;
+      return false;
+      // return (this.wordsCount > game.wordsGuessed.length) && game.state === 'FINISHED' 
+    },
+    gameRefresh: function(index) {
+      this.$store.commit('gameRefresh', index);
     }
   },
   computed: {
     games: function() {
       return this.$store.state.app.games
-    }
+    },
+    wordsCount: function() {
+      return this.$store.getters.getWordsCount
+    },
+    
   }
 }
 </script>

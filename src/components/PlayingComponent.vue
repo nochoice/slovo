@@ -13,7 +13,7 @@
         <Word 
           v-bind:class="{'animate__animated animate__shakeX': isWrongAnswer, 'animate__animated animate__shakeY': isRightAnswer }"
           class="mb-16 animate__fast" />
-          <LetterChoose class="mb-16" />
+          <LetterChoose class="mb-10" />
 
           <center>
             <v-btn @click="reset()" color="primary" :disabled="!game.charactersSelected.length">Reset</v-btn>

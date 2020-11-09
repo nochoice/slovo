@@ -13,20 +13,28 @@ const vuexLocal = new VuexPersistence({
 Vue.config.productionTip = false;
 Vue.use(Vuex);
 
+const pickRandomUnique = (words, guessedWords) => {
+  let difference = words.filter(x => !guessedWords.includes(x.id));
+
+  return difference[Math.floor(Math.random() * (difference.length - 1))]
+}
+
+const isEndOfGame = (words, guessedWords) => words.length <= guessedWords.length;
+
 const WORDS = [
-  {'id': 1, value: 'Kocka'},
+  {'id': 1, value: 'Kočka'},
   {'id': 2, value: 'Auto'},
   {'id': 3, value: 'Zupan'},
   {'id': 4, value: 'Boty'},
   {'id': 5, value: 'Kredenc'},
-  {'id': 6, value: 'Pes'},
+  {'id': 6, value: 'Pes'}
 ]
 
 let gameState = {
   name: '',
-  state: 1,
+  state: 'NEW',
   wordsGuessed: [],
-  selectedWord: 'A',
+  selectedWord: '',
   selectedWordObject: {},
   charactersSelected: [],
   charactersSelectedPosition: [],
@@ -63,16 +71,25 @@ const gameStore =  {
     },
     wordGuessed: (state, word) => {
       state.wordsGuessed.push(word);
+    },
+    gameFinish: (state) => {
+      state.state = 'FINISHED'
     }
-
   },
   actions: {
     rightWordGuessed: (store) => {
-      store.commit('wordGuessed', store.rootState.game.selectedWord)
-      store.dispatch('newRandomWord');
+      store.commit('wordGuessed', store.rootState.game.selectedWordObject.id);
+      const isEnd = isEndOfGame(WORDS, store.rootState.game.wordsGuessed);
+
+      if (isEnd) {
+        store.dispatch('congratulation');
+        store.commit('gameFinish');
+      } else {
+        store.dispatch('newRandomWord');
+      }
     },
     newRandomWord: (store) => {
-      store.commit('setWord', WORDS[Math.round(Math.random() * WORDS.length - 1)]); 
+      store.commit('setWord', pickRandomUnique(WORDS, store.rootState.game.wordsGuessed)); 
     }  
   },
   getters: {
@@ -94,15 +111,26 @@ const appStore = {
     newGame: (state, game) => {
       state.games.push(game);
     },
+    removeGame: (state, index) => {
+      state.games = state.games.filter((_, i) => i !== index);
+    },
     backToIntro: (state) => {
       state.state = 'INTRO'
     },
     startPalying: (state) => {
       state.state = 'PLAYING'
     },
+    congratulation: (state) => {
+      state.state = 'CONGRATULATION'
+    },
     setAppState: (state, enumState) => {
       state.state = enumState;
-      console.log(state)
+    },
+    gameRefresh: (state, index) => {
+      state.games[index].state = 'REFRESHED'
+    },
+    selectGame: (state, index) => {
+      state.game = state.games[index];
     }
   },
   actions: {  
@@ -119,16 +147,23 @@ const appStore = {
       state.commit('startPalying');
     },
     selectGame: (state, index) => {
-      state.rootState.game = state.state.games[index];
-      console.log('app store - selectGame')
+      state.commit('selectGame', index);
       state.commit('startPalying');
-    }
+    },
+    removeGame: (state, index) => {
+      state.commit('removeGame', index)
+    },
+    gameRefresh: (state, index) => {
+      state.commit('gameRefresh', index);
+      state.dispatch('selectGame', index);
+      state.dispatch('newRandomWord');
+    },
+    congratulation: (state) => {
+      state.commit('congratulation')
+    },
   },
   getters: {
-    
-    getGame: state => {
-      return state.games[state.gameSelected];
-    }
+    getGame: state => state.games[state.gameSelected]
    }
 }
 
@@ -136,6 +171,11 @@ const store = new Vuex.Store({
   modules: {
     game: gameStore,
     app: appStore
+  },
+  getters: {
+    getWordsCount: () => {
+      return WORDS.length;
+    }
   },
   plugins: [vuexLocal.plugin]
 })
