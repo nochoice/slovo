@@ -1,19 +1,30 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import App from './App.vue';
+import vuetify from './plugins/vuetify';
+import VuexPersistence from 'vuex-persist';
 
 import 'animate.css'
-import vuetify from './plugins/vuetify';
+
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage
+})
 
 Vue.config.productionTip = false;
 Vue.use(Vuex);
 
-const words = ['Romanek', 'Auto', 'Maminka', 'A', 'B', 'Uff' ]
+const WORDS = [
+  {'id': 1, value: 'Kocka'},
+  {'id': 2, value: 'Auto'},
+  {'id': 3, value: 'Zupan'},
+  {'id': 4, value: 'Boty'},
+  {'id': 5, value: 'Kredenc'},
+  {'id': 6, value: 'Pes'},
+]
 
 let gameState = {
-  name: 'Romankova prvni hra',
+  name: '',
   state: 1,
-  words: words,
   wordsGuessed: [],
   selectedWord: 'A',
   charactersSelected: [],
@@ -47,12 +58,20 @@ const gameStore =  {
       state.selectedWord = word;
       store.commit('reset');
       store.commit('charactersRandomGenerate')
+    },
+    wordGuessed: (state, word) => {
+      state.wordsGuessed.push(word);
     }
+
   },
   actions: {
-    // selectGame: (store) => {
-    //   console.log('game store - selectGame', store)
-    // }
+    rightWordGuessed: (store) => {
+      store.commit('wordGuessed', store.rootState.game.selectedWord)
+      store.dispatch('newRandomWord');
+    },
+    newRandomWord: (store) => {
+      store.commit('setWord', WORDS[Math.round(Math.random() * WORDS.length - 1)].value); 
+    }  
   },
   getters: {
     areWordsSame: (state) => {
@@ -91,6 +110,10 @@ const appStore = {
       state.rootState.game = ng;
 
       state.commit('newGame', ng);
+
+      state.dispatch('newRandomWord');
+      state.commit('charactersRandomGenerate');
+
       state.commit('startPalying');
     },
     selectGame: (state, index) => {
@@ -111,7 +134,8 @@ const store = new Vuex.Store({
   modules: {
     game: gameStore,
     app: appStore
-  }
+  },
+  plugins: [vuexLocal.plugin]
 })
 
 new Vue({

@@ -10,7 +10,7 @@
       <v-card class="mt-6 mb-6 pb-4" v-if="isCreateNew">
         <v-card-title>Nova hra</v-card-title>
         <v-card-text>
-          <v-text-field label="Nazev hry" v-model="name"></v-text-field>
+          <v-text-field label="Nazev hry" v-model="name" v-on:keyup.enter="createNewGame()"></v-text-field>
         </v-card-text>
 
         <v-card-actions>

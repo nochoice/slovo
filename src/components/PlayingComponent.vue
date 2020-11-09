@@ -76,8 +76,10 @@ export default {
     isSame: function(val) {
       if (!val)  return;
       this.isRightAnswer = true
+
       setTimeout(() => {
-          this.setWord();
+          // this.setWord();
+          this.$store.dispatch('rightWordGuessed');
           this.isRightAnswer = false;
         }, TIME_INTERACTION)
     }
