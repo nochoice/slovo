@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import App from './App.vue';
 import vuetify from './plugins/vuetify';
 import VuexPersistence from 'vuex-persist';
+import W from './words.json';
 
 import 'animate.css'
 
@@ -21,14 +22,7 @@ const pickRandomUnique = (words, guessedWords) => {
 
 const isEndOfGame = (words, guessedWords) => words.length <= guessedWords.length;
 
-const WORDS = [
-  {'id': 1, value: 'Kočka'},
-  {'id': 2, value: 'Auto'},
-  {'id': 3, value: 'Zupan'},
-  {'id': 4, value: 'Boty'},
-  {'id': 5, value: 'Kredenc'},
-  {'id': 6, value: 'Pes'}
-]
+const WORDS = W;
 
 let gameState = {
   name: '',
