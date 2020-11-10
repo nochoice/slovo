@@ -1,47 +1,47 @@
 <template>
-  <div class="hello">
-      <h1 class="mb-10">Vitejte v hre SLOVO</h1>
+<v-container>
+  <v-row justify="center">
+    <v-col cols="10" sm="6" md="4" class="mb-8">
+      <v-img max-height="130" contain src="../assets/logo.png"></v-img>
+    </v-col>
+  </v-row>
+  <v-row justify="center">
+    <v-col col="12" sm="8" md="6" lg="4">
+      <div class="text-center mb-10" v-if="!isCreateNew">
+          <v-btn @click="isCreateNew = true" color="primary" v-if="games.length" tile>Nová hra</v-btn>
+          <v-btn @click="isCreateNew = true" xLarge color="primary" v-if="!games.length" tile class="mt-16">Vytvořte si novú hru</v-btn>
+      </div>
 
-      <center class="ma-6" v-if="!isCreateNew">
-          <v-btn @click="isCreateNew = true" color="primary" v-if="games.length">Nova hra</v-btn>
-          <v-btn @click="isCreateNew = true" color="primary" v-if="!games.length">Vytvorte si novu hru</v-btn>
-      </center>
-
-      <v-card class="mt-6 mb-6 pb-4" v-if="isCreateNew">
-        <v-card-title>Nova hra</v-card-title>
+      <v-card class="mb-6 pb-4" v-if="isCreateNew" tile>
+        <v-card-title class="primary white--text mb-6">Nová hra</v-card-title>
         <v-card-text>
-          <v-text-field label="Nazev hry" v-model="name" v-on:keyup.enter="createNewGame()"></v-text-field>
+          <v-text-field label="Název hry" v-model="name" v-on:keyup.enter="createNewGame()"></v-text-field>
         </v-card-text>
 
         <v-card-actions>
-          <v-btn @click="createNewGame()" color="primary">Vytvorit</v-btn>
-          <v-btn @click="isCreateNew = false; name = ''" >Zpet</v-btn>
+          <v-btn @click="createNewGame()" color="primary" tile>Vytvořit</v-btn>
+          <v-btn @click="isCreateNew = false; name = ''" tile>Zpět</v-btn>
         </v-card-actions>
       </v-card>
 
-      <v-card v-if="!isCreateNew && games.length" class="pb-4" tile>
-        <v-card-title>Vase hry</v-card-title>
+      <v-card v-if="!isCreateNew && games.length" tile>
+        <v-card-title class="primary white--text">Vaše hry</v-card-title>
         <v-list-item v-for="(game, index) in games" :key="game.name" @click="select(index)">
-          <v-list-item-content >
-            <v-list-item-title>
-              {{ game.name }} 
-            </v-list-item-title>
-
+          <v-list-item-content>
+            <v-list-item-title>{{ game.name }}</v-list-item-title>
             <v-list-item-subtitle>{{ game.wordsGuessed.length || 0 }}/{{ wordsCount }}</v-list-item-subtitle>
           </v-list-item-content>
 
           <v-list-item-action>
-            <v-btn icon @click.stop="remove(index)">
-              <v-icon color="red" >mdi-delete</v-icon>
-            </v-btn>
-            <v-btn icon v-if="isRefreshAble(game)" @click.stop="gameRefresh(index)">
-              <v-icon color="green" >mdi-refresh</v-icon>
-            </v-btn>
-            
+            <v-btn icon @click.stop="remove(index)"><v-icon color="red darken-3" >mdi-delete</v-icon></v-btn>
+            <v-btn icon v-if="isRefreshAble(game)" @click.stop="gameRefresh(index)"><v-icon color="green" >mdi-refresh</v-icon></v-btn>
         </v-list-item-action>
         </v-list-item>
       </v-card>
-  </div>
+    </v-col>
+  </v-row>
+</v-container>
+  
 </template>
 
 <script>
@@ -91,7 +91,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h1 {
-  text-align: center;
-}
+
 </style>

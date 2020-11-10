@@ -1,7 +1,7 @@
 <template>
   <center>
     <div class="d-flex justify-center flex-wrap">
-      <v-btn v-for="i in size" :key="i" @click="choose(i-1)" color="primary" elevation="0" outlined :disabled="charPositionSelected.includes(i-1)" class="mr-2 ml-2 mb-4">{{ charactersGenerated[i-1] }}</v-btn>
+      <v-btn v-for="i in size" :key="i" @click="choose(i-1)" color="primary" tile outlined :disabled="charPositionSelected.includes(i-1)" class="mr-2 ml-2 mb-4">{{ charactersGenerated[i-1] }}</v-btn>
     </div>
   </center>
 </template>

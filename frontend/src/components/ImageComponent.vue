@@ -4,7 +4,7 @@
       <v-col>
         <center>
           <v-img
-            height="200"
+            height="150"
               contain
             :src="imageSrc"
           ></v-img>

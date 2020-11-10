@@ -141,7 +141,8 @@ const appStore = {
       state.commit('startPalying');
     },
     selectGame: (state, index) => {
-      state.commit('selectGame', index);
+      // state.commit('selectGame', index);
+      state.rootState.game = state.rootState.app.games[index]
       state.commit('startPalying');
     },
     removeGame: (state, index) => {
