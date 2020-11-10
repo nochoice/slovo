@@ -1,9 +1,6 @@
 <template>
   <div class="d-flex flex-wrap justify-center">
-    <v-btn v-for="i in wordCount" :key="i" color="primary" class="mr-2 ml-2 mb-2" elevation="0">{{ charactersSelected[i-1] }}</v-btn>
-    <!-- <div v-for="i in wordCount" :key="i">
-      {{ charactersSelected[i-1]  }}
-    </div> -->
+    <v-btn v-for="i in wordCount" :key="i" color="primary" class="mr-2 ml-2 mb-2" elevation="0" tile>{{ charactersSelected[i-1] }}</v-btn>
   </div>
 </template>
 

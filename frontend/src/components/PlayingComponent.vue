@@ -1,27 +1,40 @@
 <template>
-  <div>
-    <div class="d-flex justify-center align-center mb-16">
-      <v-btn elevation="2" icon @click="back()" class="mr-4"><v-icon dark>mdi-keyboard-return</v-icon></v-btn>
-      <h1>{{ game.name }}</h1>
-    </div>
 
-    <v-card>
-      <v-card-text class="pt-10 pb-10">
+<v-container>
 
-        <WordImage />
+  <v-row  justify="center">
+    <v-col col="12" sm="8" md="10" lg="8">
+      <v-card tile>
+        <v-card-title class="primary white--text mb-6">
+          <v-btn color="white" outlined icon @click="back()" class="mr-4"><v-icon>mdi-keyboard-return</v-icon></v-btn>
+          {{ game.name }}
+        </v-card-title>
+        <v-card-text>
+          <WordImage />
         
-        <Word 
-          v-bind:class="{'animate__animated animate__shakeX': isWrongAnswer, 'animate__animated animate__shakeY': isRightAnswer }"
-          class="mb-16 animate__fast" />
+          <Word 
+            v-bind:class="{'animate__animated animate__headShake': isWrongAnswer, 'animate__animated animate__flipOutX': isRightAnswer }"
+            class="mb-4" />
           <LetterChoose class="mb-10" />
 
           <center>
-            <v-btn @click="reset()" color="primary" :disabled="!game.charactersSelected.length">Reset</v-btn>
+            <v-btn @click="reset()" color="primary" :disabled="!game.charactersSelected.length" tile>Reset</v-btn>
           </center>
         </v-card-text>
       
       </v-card>
+    </v-col>
+  </v-row>
+
+  <div>
+    
+
+    
   </div>
+
+
+</v-container>
+  
 </template>
 
 <script>

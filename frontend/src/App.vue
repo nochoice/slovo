@@ -1,17 +1,17 @@
 <template>
   <v-app>
-    <v-main class="mt-10">
-      <v-container class="wrapper">
-        <Intro v-if="gamesState === 'INTRO'"/>
-        <Playing v-if="gamesState === 'PLAYING'"/>
-        <Congratulation v-if="gamesState === 'CONGRATULATION'"/>
+    <v-main class="mt-4">
+      <v-container>
+        <v-row>
+          <v-col>
+            <Intro v-if="gamesState === 'INTRO'"/>
+            <Playing v-if="gamesState === 'PLAYING'"/>
+            <Congratulation v-if="gamesState === 'CONGRATULATION'"/>
+          </v-col>
+        </v-row>
 
       </v-container>
     </v-main>
-
-    <v-footer app class="d-flex justify-center">
-      {{ new Date().getFullYear() }} — <b>© Slovo</b>
-    </v-footer>
   </v-app>
 </template>
 
@@ -45,9 +45,5 @@ export default {
 </script>
 
 <style>
-@media (min-width: 772px)  {
-  .wrapper {
-      max-width: 772px !important;
-  }
-}
+
 </style>
