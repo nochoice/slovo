@@ -45,7 +45,7 @@ const gameStore =  {
         return alphabet[Math.floor(Math.random() * alphabet.length)];
       }
       const rest = new Array(state.charactersGeneratedLength - state.selectedWord.length).fill('').map(() => randomCharacter().toUpperCase());
-      state.charactersGenerated = [...rest, ...state.selectedWord.split('')].map(c => c.toUpperCase()).sort(() => .5 - Math.random()).sort(() => .5 - Math.random());
+      state.charactersGenerated = shuffleArray([...rest, ...state.selectedWord.split('')]).map(ch => ch.toUpperCase());
     },
     reset: function(state) {
       state.charactersSelected = [];
@@ -174,6 +174,16 @@ const store = new Vuex.Store({
   },
   plugins: [vuexLocal.plugin]
 })
+
+const shuffleArray = (a) => {
+  let array = [...a];
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+
+  return array;
+}
 
 new Vue({
   render: h => h(App),
