@@ -11,18 +11,17 @@
     {"id": 10, "value": "pračka"},
     {"id": 11, "value": "vysavač"},
     {"id": 12, "value": "schody"},
-    {"id": 13, "value": "Dům"},
-    {"id": 14, "value": "sedící"},
+    {"id": 13, "value": "dům"},
+    {"id": 14, "value": "židle"},
     {"id": 15, "value": "umývadlo"},
     {"id": 16, "value": "kalhoty"},
     {"id": 17, "value": "tlacitko"},
-    {"id": 18, "value": "spacak"},
+    {"id": 18, "value": "spacák"},
     {"id": 19, "value": "tiskárna"},
     {"id": 20, "value": "tričko"},
-    {"id": 21, "value": "židle"},
     {"id": 22, "value": "počítač"},
     {"id": 23, "value": "gril"},
     {"id": 24, "value": "kabel"},
     {"id": 25, "value": "ponožky"},
-    {"id": 26, "value": "zachod"}
+    {"id": 26, "value": "záchod"}
 ]
