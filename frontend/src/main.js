@@ -45,7 +45,7 @@ const gameStore =  {
         return alphabet[Math.floor(Math.random() * alphabet.length)];
       }
       const rest = new Array(state.charactersGeneratedLength - state.selectedWord.length).fill('').map(() => randomCharacter().toUpperCase());
-      state.charactersGenerated = [...rest, ...state.selectedWord.split('')].map(c => c.toUpperCase()).sort(() => .5 - Math.random());
+      state.charactersGenerated = [...rest, ...state.selectedWord.split('')].map(c => c.toUpperCase()).sort(() => .5 - Math.random()).sort(() => .5 - Math.random());
     },
     reset: function(state) {
       state.charactersSelected = [];

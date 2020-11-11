@@ -1,6 +1,8 @@
 <template>
   <div class="d-flex flex-wrap justify-center">
-    <v-btn v-for="i in wordCount" :key="i" color="primary" class="mr-2 ml-2 mb-2" elevation="0" tile>{{ charactersSelected[i-1] }}</v-btn>
+    <div class="character mr-2 ml-2 mb-2" v-for="i in wordCount" :key="i">
+        {{ charactersSelected[i-1] }}
+    </div>
   </div>
 </template>
 
@@ -21,20 +23,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.word {
-  $size: 40px;
-  display: flex;
-  justify-content: center;
-
-  & > div {
-    border: 2px solid rgb(36, 194, 128);
-    height: $size;
-    width: $size;
-    text-align: center;
-    line-height: $size;
-    margin: 0 4px;
-    border-radius: 4px;
-  }
+.character {
+  border-bottom: 2px solid #1976d2;
+  width: 20px;
+  height: 26px;
+  text-align: center;
+  font-size: 20px;
 }
 </style>
 

@@ -1,11 +1,9 @@
 <template>
-
 <v-container>
-
   <v-row  justify="center">
     <v-col col="12" sm="8" md="10" lg="8">
       <v-card tile>
-        <v-card-title class="primary white--text mb-6">
+        <v-card-title class="primary white--text mb-2">
           <v-btn color="white" outlined icon @click="back()" class="mr-4"><v-icon>mdi-keyboard-return</v-icon></v-btn>
           {{ game.name }}
         </v-card-title>
@@ -15,23 +13,15 @@
           <Word 
             v-bind:class="{'animate__animated animate__headShake': isWrongAnswer, 'animate__animated animate__flipOutX': isRightAnswer }"
             class="mb-4" />
-          <LetterChoose class="mb-10" />
+          <LetterChoose class="mb-6" />
 
           <center>
             <v-btn @click="reset()" color="primary" :disabled="!game.charactersSelected.length" tile>Reset</v-btn>
           </center>
         </v-card-text>
-      
       </v-card>
     </v-col>
   </v-row>
-
-  <div>
-    
-
-    
-  </div>
-
 
 </v-container>
   

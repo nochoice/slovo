@@ -1,16 +1,16 @@
 <template>
   <v-app>
-    <v-main class="mt-4">
-      <v-container>
+    <v-main>
+      <!-- <v-container>
         <v-row>
-          <v-col>
+          <v-col> -->
             <Intro v-if="gamesState === 'INTRO'"/>
             <Playing v-if="gamesState === 'PLAYING'"/>
             <Congratulation v-if="gamesState === 'CONGRATULATION'"/>
-          </v-col>
+          <!-- </v-col>
         </v-row>
 
-      </v-container>
+      </v-container> -->
     </v-main>
   </v-app>
 </template>
