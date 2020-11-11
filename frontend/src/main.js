@@ -41,7 +41,7 @@ const gameStore =  {
   mutations: { 
     charactersRandomGenerate: function(state) {
       const randomCharacter = () => {
-        const alphabet = "abcdefghijklmnopqrstuvwxyz";
+        const alphabet = "aábcčdeěéfghiíjklmnoópqrřsštuúůvwxyýzž";
         return alphabet[Math.floor(Math.random() * alphabet.length)];
       }
       const rest = new Array(state.charactersGeneratedLength - state.selectedWord.length).fill('').map(() => randomCharacter().toUpperCase());
