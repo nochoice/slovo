@@ -15,11 +15,11 @@
       <v-card class="mb-6 pb-4" v-if="isCreateNew" tile>
         <v-card-title class="primary white--text mb-6">Nová hra</v-card-title>
         <v-card-text>
-          <v-text-field label="Název hry" v-model="name" v-on:keyup.enter="createNewGame()"></v-text-field>
+          <v-text-field label="Název hry" v-model="name" v-on:keyup.enter="createNewGame()" required></v-text-field>
         </v-card-text>
 
         <v-card-actions>
-          <v-btn @click="createNewGame()" color="primary" tile>Vytvořit</v-btn>
+          <v-btn @click="createNewGame()" color="primary" tile :disabled="!isCreateGameValid">Vytvořit</v-btn>
           <v-btn @click="isCreateNew = false; name = ''" tile>Zpět</v-btn>
         </v-card-actions>
       </v-card>
@@ -33,7 +33,7 @@
           </v-list-item-content>
 
           <v-list-item-action>
-            <v-btn icon @click.stop="remove(index)"><v-icon color="red darken-3" >mdi-delete</v-icon></v-btn>
+            <v-btn icon @click.stop="remove(index)"><v-icon color="red" >mdi-delete</v-icon></v-btn>
             <v-btn icon v-if="isRefreshAble(game)" @click.stop="gameRefresh(index)"><v-icon color="green" >mdi-refresh</v-icon></v-btn>
         </v-list-item-action>
         </v-list-item>
@@ -54,6 +54,7 @@ export default {
   },
   methods: {
     createNewGame: function() {
+      if (!this.isCreateGameValid) return;
       this.$store.dispatch('newGame', this.name);
     },
     select: function(index) {
@@ -84,6 +85,9 @@ export default {
     wordsCount: function() {
       return this.$store.getters.getWordsCount
     },
+    isCreateGameValid: function() {
+      return this.name && !this.games.map(g => g.name).includes(this.name)
+    }
     
   }
 }
