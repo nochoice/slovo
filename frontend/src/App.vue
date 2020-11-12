@@ -46,6 +46,9 @@ export default {
 
 <style>
 #app {
-  background: #0b8613
+  background-color: #0b8613;
+  background-image: url('./assets/bg.png');
+  background-repeat: no-repeat;
+  background-position: right bottom;
 }
 </style>
