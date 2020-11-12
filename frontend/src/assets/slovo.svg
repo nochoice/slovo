@@ -37,16 +37,10 @@
      inkscape:window-width="1920"
      inkscape:window-height="1027"
      inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-y="1072"
      inkscape:window-maximized="1"
      showguides="true"
-     inkscape:guide-bbox="true">
-    <sodipodi:guide
-       position="104.51041,249.65328"
-       orientation="0,1"
-       id="guide4682"
-       inkscape:locked="false" />
-  </sodipodi:namedview>
+     inkscape:guide-bbox="true" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -55,7 +49,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -73,7 +67,7 @@
            height="42.17387"
            x="147.98735"
            y="151.00548" /></flowRegion><flowPara
-         id="flowPara4530"></flowPara></flowRoot>    <flowRoot
+         id="flowPara4530" /></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot4532"
        style="fill:black;fill-opacity:1;stroke:none;font-family:Minecrafter;font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:Minecrafter;font-stretch:normal;font-variant:normal"><flowRegion
@@ -83,9 +77,9 @@
            height="52.780472"
            x="198.49498"
            y="247.98012" /></flowRegion><flowPara
-         id="flowPara4538"></flowPara></flowRoot>    <g
+         id="flowPara4538" /></flowRoot>    <g
        id="g4606"
-       transform="rotate(-14.719442,62.052603,52.348477)">
+       transform="rotate(-14.719442,79.557375,-128.36422)">
       <rect
          y="31.6607"
          x="55.962532"
@@ -106,7 +100,7 @@
            sodipodi:role="line">S</tspan></text>
     </g>
     <g
-       transform="rotate(5.5904097,69.703674,220.84646)"
+       transform="rotate(5.5904097,108.13616,696.21114)"
        id="g4606-6">
       <rect
          y="31.660709"
@@ -128,7 +122,7 @@
            sodipodi:role="line">l</tspan></text>
     </g>
     <g
-       transform="rotate(-10.827042,82.840979,-154.95875)"
+       transform="rotate(-10.827042,98.262062,-400.99447)"
        id="g4606-3">
       <rect
          y="32.156933"
@@ -150,7 +144,7 @@
            sodipodi:role="line">o</tspan></text>
     </g>
     <g
-       transform="rotate(8.1301024,96.09488,443.15242)"
+       transform="rotate(8.1301024,129.77399,769.50044)"
        id="g4606-2">
       <rect
          y="31.660709"
@@ -172,7 +166,7 @@
            sodipodi:role="line">v</tspan></text>
     </g>
     <g
-       transform="rotate(-3.4473869,104.86402,-1245.2109)"
+       transform="rotate(-3.4473869,103.46972,-2018.4037)"
        id="g4606-2-0">
       <rect
          y="31.660709"
@@ -192,6 +186,74 @@
            x="60.536545"
            id="tspan4548-3-0"
            sodipodi:role="line">o</tspan></text>
+    </g>
+    <g
+       id="g887"
+       transform="rotate(46.171019,62.124476,22.151111)">
+      <rect
+         style="opacity:1;fill:#cc0000;fill-opacity:1;stroke:none;stroke-width:6.5999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+         id="rect881"
+         width="18.898809"
+         height="18.898809"
+         x="5.9314585"
+         y="66.640091"
+         transform="rotate(-46.595373)" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:Minecrafter;-inkscape-font-specification:Minecrafter;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="10.068028"
+         y="81.621048"
+         id="text885"
+         transform="rotate(-46.595373)"><tspan
+           sodipodi:role="line"
+           id="tspan883"
+           x="10.068028"
+           y="81.621048"
+           style="font-size:14.11111069px;fill:#ffffff;stroke-width:0.26458332">r</tspan></text>
+    </g>
+    <g
+       transform="rotate(0.50916949,404.03002,-3688.4225)"
+       id="g903">
+      <rect
+         style="opacity:1;fill:#003399;fill-opacity:1;stroke:none;stroke-width:6.5999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+         id="rect897"
+         width="18.898809"
+         height="18.898809"
+         x="55.962532"
+         y="31.6607" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:Minecrafter;-inkscape-font-specification:Minecrafter;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="60.536545"
+         y="46.64167"
+         id="text901"><tspan
+           sodipodi:role="line"
+           id="tspan899"
+           x="60.536545"
+           y="46.64167"
+           style="font-size:14.11111069px;fill:#ffffff;stroke-width:0.26458332">h</tspan></text>
+    </g>
+    <g
+       id="g911"
+       transform="rotate(-0.72194338,-196.72038,-314.79485)">
+      <rect
+         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:none;stroke-width:6.5999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+         id="rect905"
+         width="18.898809"
+         height="18.898809"
+         x="55.962528"
+         y="31.660709" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:Minecrafter;-inkscape-font-specification:Minecrafter;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="60.663544"
+         y="46.64167"
+         id="text909"><tspan
+           sodipodi:role="line"
+           id="tspan907"
+           x="60.663544"
+           y="46.64167"
+           style="font-size:14.11111069px;fill:#ffffff;stroke-width:0.26458332">a</tspan></text>
     </g>
   </g>
 </svg>

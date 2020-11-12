@@ -1,7 +1,7 @@
 <template>
 <v-container>
   <v-row justify="center">
-    <v-col cols="10" sm="6" md="4" class="mb-8">
+    <v-col cols="10" sm="6" md="4" xl="3" class="mb-8">
       <v-img max-height="130" contain src="../assets/logo.png"></v-img>
     </v-col>
   </v-row>
